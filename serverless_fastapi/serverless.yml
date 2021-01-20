@@ -1,0 +1,40 @@
+service: serverless-fastapi
+
+layers:
+  FastApiModule:
+    path: layers/fastapi
+    compatibleRuntimes:
+      - python3.8
+
+custom:
+  stage: ${opt:stage, 'dev'}
+
+functions:
+  fastapi:
+    timeout: 30
+    handler: app/main.handler
+    layers:
+      - { Ref: FastApiModuleLambdaLayer }
+    events:
+      - http: ANY /
+      - http:
+          path: /{proxy+}
+          method: ANY
+
+provider:
+  name: aws
+  region: us-east-1
+  runtime: python3.8
+  stage: ${self:custom.stage}
+  environment:
+    ENV: ${self:custom.stage}
+  deploymentBucket: yuriniitsuma
+
+package:
+  exclude:
+    - node_modules/**
+    - .vscode/**
+    - .metals/**
+    - layers/**
+    - "**/__pycache__/**"
+    - serverless.yml
