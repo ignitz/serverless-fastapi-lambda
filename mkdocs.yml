@@ -1,0 +1,22 @@
+site_name: "FastAPI with AWS Lambda"
+repo_name: "GitHub"
+repo_url: "https://github.com/ignitz/serverless-fastapi-lambda"
+site_description: "Apresentação do FastAPI no Lambda"
+site_author: "Yuri Niitsuma"
+copyright: "Yuri Niitsuma"
+nav:
+  - Intro: "index.md"
+  - fastapi.md
+  - serverless_fastapi.md
+  - Editar documentação: "contrib.md"
+theme:
+  name: "material"
+  language: "pt"
+  shortcuts:
+    help: 191 # ?
+    next: 78 # n
+    previous: 80 # p
+    search: 83 # s
+  palette:
+    primary: "blue"
+    accent: "blue"
