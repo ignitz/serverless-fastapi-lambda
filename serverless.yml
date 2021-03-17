@@ -2,7 +2,7 @@ service: serverless-fastapi
 
 layers:
   FastApiModule:
-    path: layers/fastapi
+    path: serverless/layers/fastapi
     compatibleRuntimes:
       - python3.8
 
@@ -28,13 +28,13 @@ provider:
   stage: ${self:custom.stage}
   environment:
     ENV: ${self:custom.stage}
-  deploymentBucket: yuriniitsuma
+  # deploymentBucket: your personal bucket to store serverless files
 
 package:
   exclude:
     - node_modules/**
     - .vscode/**
     - .metals/**
-    - layers/**
+    - serverless/layers/**
     - "**/__pycache__/**"
     - serverless.yml
